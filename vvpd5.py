@@ -82,3 +82,42 @@ def alternating_series(x, n_terms=100):
         result += term
 
     return result
+
+def main_menu():
+    print("Выберите функцию:")
+    print("1. Вычислить сумму ряда для экспоненты e^x")
+    print("2. Вычислить сумму ряда с чередующимися знаками")
+    print("4. Выход")
+
+    while True:
+        choice = input("Выберите дейтвие (1-4): ")
+
+        if choice == '1':
+            try:
+                x = float(input("Введите значение x: "))
+                n_terms = int(input("Введите количество членов ряда: ") or 100)
+                result = exp_series(x, n_terms)
+                print(f"Сумма ряда для e^{x} составляет: {result}")
+            except ValueError as e:
+                print(f"Ошибка: {e}")
+
+        elif choice == '2':
+            try:
+                x = float(input("Введите значение x (-1 < x <= 1): "))
+                n_terms = int(input("Введите количество членов ряда: ") or 100)
+                result = alternating_series(x, n_terms)
+                print(f"Сумма ряда с чередующимися знаками для x = {x} составляет: {result}")
+            except ValueError as e:
+                print(f"Ошибка: {e}")
+
+
+
+        elif choice == '4':
+            break
+
+        else:
+            print("Ошибка, выберите дейтсвие 1-4")
+
+
+if __name__ == "__main__":
+    main_menu()
