@@ -74,24 +74,69 @@ def alternating_series(x, n_terms=100):
         raise ValueError("Ошибка, x должно быть в диапазоне (-1, 1]")
     if not isinstance(n_terms, int) or n_terms <= 0:
         raise ValueError("Ошибка, исло должно быть положительным и целым")
-
     result = 0.0
-
     for n in range(1, n_terms + 1):
         term = ((-1) ** (n + 1)) * (x ** n) / n
         result += term
-
     return result
+
+def binomial_series(x, m, n_terms):
+    """
+    Краткое описание:
+    Вычисляет сумму ряда для (1+x)^m с использованием первых n_terms членов.
+
+    Подробное описание:
+    Функция реализует разложение бинома Ньютона для (1+x)^m в виде бесконечного ряда.
+    Она суммирует первые n_terms членов ряда, используя формулу для коэффициентов,
+    которые зависят от m и номера члена ряда.
+
+    Аргументы:
+    x : float
+        Значение x, где -1 < x < 1.
+    m : float
+        Параметр m, который определяет степень бинома.
+    n_terms : int
+        Количество членов ряда для вычисления.
+
+    Возвращаемое значение:
+    float
+        Сумма ряда (1+x)^m, вычисленная с использованием первых n_terms членов.
+
+    Исключения:
+    ValueError:
+        Вызывается, если значение x не находится в диапазоне -1 < x < 1.
+
+    Примеры использования:
+    --> result = binomial_series(0.5, 3, 10)
+    --> print(result)  # Ожидаемое значение для (1 + 0.5)^3 с 10 членами
+    --> result = binomial_series(0.2, 2, 5)
+    --> print(result)  # Ожидаемое значение для (1 + 0.2)^2 с 5 членами
+    """
+    if not (-1 < x < 1):
+        raise ValueError("Значение x должно быть в диапазоне -1 < x < 1")
+
+    sum_series = 0.0
+
+    for n in range(n_terms):
+        numerator = 1
+        for k in range(n):
+            numerator *= (m - k)
+        denominator = 1
+        for k in range(1, n + 1):
+            denominator *= k
+        term = (numerator / denominator) * (x ** n)
+        sum_series += term
+
+    return sum_series
 
 def main_menu():
     print("Выберите функцию:")
     print("1. Вычислить сумму ряда для экспоненты e^x")
     print("2. Вычислить сумму ряда с чередующимися знаками")
+    print("3. Вычислить функцию (1+x)^m через ряды Маклорена")
     print("4. Выход")
-
     while True:
         choice = input("Выберите дейтвие (1-4): ")
-
         if choice == '1':
             try:
                 x = float(input("Введите значение x: "))
@@ -100,7 +145,6 @@ def main_menu():
                 print(f"Сумма ряда для e^{x} составляет: {result}")
             except ValueError as e:
                 print(f"Ошибка: {e}")
-
         elif choice == '2':
             try:
                 x = float(input("Введите значение x (-1 < x <= 1): "))
@@ -109,12 +153,18 @@ def main_menu():
                 print(f"Сумма ряда с чередующимися знаками для x = {x} составляет: {result}")
             except ValueError as e:
                 print(f"Ошибка: {e}")
-
-
-
+        elif choice == '3':
+            try:
+                x = float(input("Введите значение x (где -1 < x < 1): "))
+                m = float(input("Введите значение m: "))
+                n_terms = int(input("Введите количество членов ряда: "))
+                result = binomial_series(x, m, n_terms)
+                print(f"Сумма ряда для (1 + {x})^{m} с {n_terms} членами: {result}")
+            except ValueError as e:
+                print(f"Ошибка: {e}")
         elif choice == '4':
+            print("Завершение программы.")
             break
-
         else:
             print("Ошибка, выберите дейтсвие 1-4")
 
