@@ -88,3 +88,4 @@ $$
 2. Склонировали репозиторий
 3. Перешли в директорию проекта
 
+![](https://sun9-53.userapi.com/impg/owpm8ZQ7GVkAXEP9n4-9oAN-LAvUMpTesbwtOw/bKne45EVZBQ.jpg?size=736x736&quality=95&sign=6e1799d461e6a33384f6269f1cc73f45&type=album)
