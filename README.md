@@ -9,25 +9,32 @@
 Функция `alternating_series(x, n_terms)` вычисляет сумму чередующегося ряда для заданного значения $$ x $$ и количества членов ряда.
 
 **Формула:**
-$$ S = \sum_{n=0}^{n\_terms} \frac{(-1)^n \cdot x^{2n}}{(2n)!} $$
+
+
+
+![image](https://github.com/user-attachments/assets/0335c4a0-984a-4001-a987-b888858c42d8)
 
 ### 2. Экспоненциальный ряд
 
 Функция `exp_series(x, n_terms)` вычисляет сумму ряда для экспоненты $$ e^x $$ с заданным количеством членов.
 
 **Формула:**
-$$ S = \sum_{n=0}^{n\_terms} \frac{x^n}{n!} $$
+
+
+![1](https://github.com/user-attachments/assets/a39dca15-bcc9-4567-a2fc-9231702fd90d)
+
 
 ## 3. Бином Ньютона
 
 Функция `binomial_series(x, m, n_terms)`вычисляет сумму ряда для $$(1+x)^m$$ с использованием первых `n_terms` членов.
 
 **Формула:**
-$$
-(1+x)^m = 1 + \frac{m}{1!} x + \frac{m(m-1)}{2!} x^2 + \frac{m(m-1)(m-2)}{3!} x^3 + \cdots + \frac{m(m-1)(m-2)\cdots(m-n+1)}{n!} x^n + \cdots
-$$
 
-где $$ -1 < x < 1 $$
+
+![2](https://github.com/user-attachments/assets/916180ec-1dc0-446b-a47d-89fa01b0de23)
+
+
+где  -1 < x < 1 
 #### Аргументы
 
 1. Экспоненциальный ряд
